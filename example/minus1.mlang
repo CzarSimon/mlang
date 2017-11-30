@@ -1,0 +1,50 @@
+init = F. -> {
+  0;
+}
+
+assign = F. value -> {
+  value;
+}
+
+decrement = F. input -> {
+  res <- init;
+  temp <- assign 1;
+  for input {
+    res++;
+    for temp {
+      res <- init;
+      temp <- init;
+    }
+  }
+  res;
+}
+
+plus = F. a b -> {
+  for b {
+    a++;
+  }
+  a;
+}
+
+multiply = F. a b -> {
+  i <- assign a;
+  for decrement i {
+    for b {
+      a++;
+    }
+  }
+  a;
+}
+
+minus = F. a b -> {
+  res <- assign a;
+  for b {
+    res <- decrement res;
+  }
+  res;
+}
+
+main = F. -> {
+  log decrement 5;
+  log minus 4 2;
+}
